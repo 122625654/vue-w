@@ -136,7 +136,7 @@ export default {
       const x = cart.left - ball.left;
       const y = cart.top - ball.top;
       el.style.transform = `translate(${x}px,${y}px)`;
-      el.style.transition = "all 1s ease";
+      el.style.transition = "all 1s cubic-bezier(0.25, 0.18, 0.73, 0.01)";
       // 自动隐藏调用函数
       done();
     },
