@@ -2,7 +2,7 @@
   <div class="app">
     <!-- <router-link to='/member'>首页</router-link> -->
     <!-- 头部 -->
-    <van-nav-bar title="主页" left-text="返回" left-arrow/>
+    <van-nav-bar title="主页" left-text="返回" left-arrow @click-left="fanhui"/>
     <!-- 内容 -->
     <!-- 7.渲染 -->
     <!-- <transition enter-active-class="fadeInRight" leave-active-class="fadeOutLeft"  :duration="{ enter: 1000, leave: 500 }">
@@ -15,7 +15,7 @@
     <van-tabbar v-model="active">
       <van-tabbar-item icon="wap-home" to="/home">首页</van-tabbar-item>
       <van-tabbar-item icon="user-circle-o" to="/member">会员</van-tabbar-item>
-      <van-tabbar-item icon="shopping-cart-o" info="5" to="/cart" id="cart">购物车</van-tabbar-item>
+      <van-tabbar-item icon="shopping-cart-o" :info="$store.getters.add" to="/cart" id="cart">购物车</van-tabbar-item>
       <van-tabbar-item icon="search" to="/search">搜索</van-tabbar-item>
     </van-tabbar>
   </div>
@@ -28,7 +28,12 @@ export default {
     return {
       active: 0
     };
-  }
+  },
+  methods: {
+    fanhui(){
+      this.$router.go(-1)
+    }
+  },
 };
 </script>
 <style lang='less'>

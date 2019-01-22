@@ -21,7 +21,7 @@
       </p>
       <p class="show-goumai">购买数量:
         <van-stepper
-          v-model="value"
+          v-model="$store.state.count"
           integer
           :min="1"
           :max="40"
@@ -87,6 +87,7 @@ export default {
       value: 1,
       id: "",
       show: [],
+      // goodsinfo,
       flag: false,
       disabled: false
     };
@@ -129,6 +130,7 @@ export default {
 
       // 球的距离  上   下    左   右
       const ball = this.$refs.ball.getBoundingClientRect();
+      // console.log(ball);
       // 购物车    上  下  左  右
       const cart = document
         .querySelector("#cart .van-info")
@@ -145,6 +147,15 @@ export default {
     },
     // 点击加入购物车
     gettime() {
+      var goodsinfo = {
+        id: this.id,
+        count: 1,
+        price: 998,
+        selected: true,
+        timer: null
+      };
+      // 调用  store 中 mutations 来将商品加入购物车
+      this.$store.commit("add", goodsinfo);
       // 点击加入购物车去反
       this.disabled = !this.disabled;
       setTimeout(() => {

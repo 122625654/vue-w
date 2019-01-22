@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App'
-import router from './router/index'
+import router from './router'
+
+import store from './store'
 
 // 引入资源发送ajax
 // import VueResource from 'vue-resource'
@@ -60,6 +62,8 @@ Vue.use(Tabbar)
 
 new Vue({
   el: '#app',
+  // 挂载vuex
+  store,
   //  6.挂载
   router,
   render: c => c(App)
